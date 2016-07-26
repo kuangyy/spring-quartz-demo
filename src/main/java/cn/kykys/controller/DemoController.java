@@ -16,7 +16,7 @@ import java.util.Map;
  * and set the return to default @ResponseBody
  */
 @RestController("/demo")
-public class DemoController {
+public class DemoController extends BaseController {
 
 
     @RequestMapping("test")

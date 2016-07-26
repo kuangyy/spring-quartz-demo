@@ -20,5 +20,7 @@ public class JobA implements Job{
         System.out.println(" job execute "+new Date());
 
 
+        //you should update your last execute time
+
     }
 }

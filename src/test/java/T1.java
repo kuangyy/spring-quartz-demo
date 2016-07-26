@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Created by kuangye on 2016/7/22.
  */
-public class aa {
+public class T1 {
 
 
     @Test

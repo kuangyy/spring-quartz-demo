@@ -92,7 +92,7 @@ public class JobScheduler implements IJob {
         try {
             GroupMatcher<TriggerKey> matcher = GroupMatcher.anyTriggerGroup();
             Set<TriggerKey> Keys = scheduler.getTriggerKeys(matcher);
-            List<ScheduleJob> triggers = new ArrayList<ScheduleJob>();
+            List<ScheduleJob> triggers = new ArrayList<>();
 
             for (TriggerKey key : Keys) {
                 Trigger trigger = scheduler.getTrigger(key);
@@ -103,7 +103,7 @@ public class JobScheduler implements IJob {
                 if (trigger instanceof SimpleTrigger) {
                     SimpleTrigger simple = (SimpleTrigger) trigger;
                     pageTrigger.setCronExpression("重复次数:" + (simple.getRepeatCount() == -1 ?
-                            "无限" : simple.getRepeatCount()) + ",重复间隔:" + (simple.getRepeatInterval() / 1000L));
+                            "无限" : simple.getRepeatCount()) + ",重复间隔:" + (simple.getRepeatInterval() / 1000L)+"(秒)");
                     pageTrigger.setDesc(simple.getDescription());
                 }
                 if (trigger instanceof CronTrigger) {

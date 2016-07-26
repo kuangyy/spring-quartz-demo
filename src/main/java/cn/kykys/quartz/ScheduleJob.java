@@ -1,5 +1,7 @@
 package cn.kykys.quartz;
 
+import java.util.Date;
+
 /**
  * Created by kuangye on 2016/7/22.
  */
@@ -34,6 +36,13 @@ public class ScheduleJob {
      * 任务描述
      **/
     private String desc;
+
+
+    private Date executeTime;
+
+
+    private Date lastExecuteTime;
+
 
 
     public ScheduleJob() {
