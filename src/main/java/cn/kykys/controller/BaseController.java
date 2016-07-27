@@ -3,7 +3,8 @@ package cn.kykys.controller;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,7 +21,7 @@ import java.text.SimpleDateFormat;
  */
 public class BaseController {
 
-    private static Logger logger = Logger.getLogger(BaseController.class);
+    private static Logger logger = LogManager.getLogger(BaseController.class);
 
 
 
@@ -35,8 +36,8 @@ public class BaseController {
 
         if(ex instanceof IllegalArgumentException){
             response.setStatus(HttpStatus.BAD_REQUEST.value());
-        }else if (ex instanceof BusinessException) {
-            response.setStatus(HttpStatus.BAD_REQUEST);
+//        }else if (ex instanceof BusinessException) {
+//            response.setStatus(HttpStatus.BAD_REQUEST);
         }else {
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         }
@@ -61,11 +62,11 @@ public class BaseController {
             else {
                 //否则只输出带有PhoneFilter注解的,供手机端使用
                 objectMapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, false);
-                ps.write(objectMapper.writerWithView(Debug.class).writeValueAsString(object).getBytes("UTF-8"));
+//                ps.write(objectMapper.writerWithView(Debug.class).writeValueAsString(object).getBytes("UTF-8"));
             }
         } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-            throw new BusinessException(e.getMessage(), HttpStatus.BAD_GATEWAY);
+//            logger.error(e.getMessage(), e);
+//            throw new BusinessException(e.getMessage(), HttpStatus.BAD_GATEWAY);
         } finally {
             if (ps != null) {
                 try {
